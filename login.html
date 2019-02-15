@@ -1,0 +1,50 @@
+<html>
+<head>
+<script>
+	//this code shows how to create a login form with validation
+function check(form){
+    pass1 = form.pass1.value;
+	pass2 = form.pass2.value;
+	num   = form.number.value;
+	pass = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+	if(pass1!=pass2){
+	   alert("password dont match");
+	   return false;
+	}
+	else if(!pass.test(pass1)){
+	alert("the password should contain [a-z],[A-Z],special characters and atleast 8 characters");
+	return false;
+	}
+	else if(num.length != 10){
+		alert("number should be 10 digits")
+		return false;
+	}
+	}
+	function show(){
+	 x = document.getElementById("pass1");
+	 if(x.type === "password")
+	 {
+	 x.type = "text";
+	}
+	else{
+	x.type = "password";
+	}
+	}
+</script>
+<title>Login form</title>
+</head>
+<body><h2>Login Form</h2>
+    <form onSubmit="return check(this)" method="POST" action="ssss.php">
+    	name<br>
+    	<input type="text" name="name" id="name" required><br>
+		Type-password <br><input type = "password" id = "pass1" name = "pass1" /><br>
+		<input type="checkbox"  onclick="show()"/>show password<br>
+		Retype-password<br> <input type = "password" id = "pass2" name = "pass2" /><br>
+		Mobile number<br>
+		<input type="number" name="number" required><br>
+		email<br>
+		<input type="email" name="email" required><br><br>
+        <input type="submit" value="submit"/>
+    </form>
+</body>
+
